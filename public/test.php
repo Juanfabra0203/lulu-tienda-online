@@ -26,7 +26,7 @@ $lista = $producto->obtenerProductos();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Test clases</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@ $lista = $producto->obtenerProductos();
     <ul>
         <?php foreach ($lista as $item): ?>
             <li>
-                <img src="https://cigarrerialarosa.com/wp-content/uploads/2022/09/vasos.jpg" alt="">
+                <img src="" alt="">
                 <strong><?= htmlspecialchars($item['nombre_producto']) ?></strong> -
                 $<?= number_format($item['precio'], 2) ?>
                 (Stock: <?= $item['stock'] ?>)
@@ -48,9 +48,9 @@ $lista = $producto->obtenerProductos();
 
     <div class="row">
         <?php foreach ($lista as $item): ?>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-3 mb-3">
                 <div class="card shadow-sm " style="width: 18rem; margin:auto;">
-                    <img class="object-fit-contain" src="../assets/img/mug_1.jpeg" 
+                    <img class="object-fit-contain" src="../assets/img/<?=htmlspecialchars($item['imagen'])?>" 
                          class="card-img-top" 
                          alt="<?= htmlspecialchars($item['nombre_producto']) ?>"
                          style="height:200px; object-fit:cover;">
@@ -61,6 +61,7 @@ $lista = $producto->obtenerProductos();
                         <a href="#" class="btn btn-primary">Agregar al carrito</a>
                     </div>
                 </div>
+
             </div>
         <?php endforeach; ?>
     </div>

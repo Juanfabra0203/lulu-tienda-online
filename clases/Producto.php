@@ -57,6 +57,15 @@ class Producto {
 
     }
 
+    public function eliminarProducto($id){
+        $sql = "DELETE FROM " . $this->tabla . "WHERE id = :id";
+        $stmt = $this-> conn -> prepare($sql);
+        $stmt -> bindParam(":id" , $id , PDO:: PARAM_INT);
+        $stmt ->execute();
+        
+    }
+
+
 }
 
 
