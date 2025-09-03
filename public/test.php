@@ -58,7 +58,7 @@ $lista = $producto->obtenerProductos();
                         <h5 class="card-title"><?= htmlspecialchars($item['nombre_producto']) ?></h5>
                         <p class="card-text"><?= htmlspecialchars($item['descripcion']) ?></p>
                         <p class="text-success fw-bold">$<?= number_format($item['precio'], 2) ?></p>
-                        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                        <a href="/public/agregar_carrito.php?producto_id= <?=$item['id']?>" class="btn btn-primary">Agregar al carrito</a>
                     </div>
                 </div>
 

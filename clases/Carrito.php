@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\sql_injection_subst;
+
 require_once "../config/conexion.php";
 
 class Carrito{
@@ -36,6 +38,37 @@ class Carrito{
             $stmt -> bindParam(":cantidad" , $cantidad);
             return $stmt -> execute();
         }
+    }
+
+
+    public function obtenercarrito($usuario_id){
+        $sql = "SELECT c.id , p.nombre , p.precio , c.cantidad , (p.precio * c.cantidad) AS subtotal 
+        FROM " . $this->tabla . " c 
+        INNER JOIN productos p ON c.producto_id = p.id 
+        WHERE c.usuario_id = :usuario_id";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt ->bindParam(":usuario_id" , $usuario_id);
+        $stmt ->execute();
+        return $stmt->fetchAll(PDO:: FETCH_ASSOC);
+
+    }
+
+    public function eliminar($id){
+
+        $sql = "DELETE FROM" .$this->tabla. "WHERE id = :id";
+        $stmt = $this->conn -> prepare($sql);
+        $stmt -> bindParam(":id", $id);
+        return $stmt -> execute();
+    }
+
+    public function vaciar($usuario_id){
+        
+        $sql = "DELETE FROM " . $this->tabla . "WHERE usuario_id = :usuario_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt -> bindParam(":usuario_id", $usuario_id);
+        return $stmt -> execute();
+
     }
 
 
