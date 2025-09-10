@@ -10,7 +10,7 @@ if(isset($_GET['producto_id'])){
     $carrito = new Carrito();
     $carrito ->agregarCarrito($usuario_id,$producto_id,1);
 
-    header("Location: index.php");
+    header("Location: test.php");
     exit;
 }else{
     echo "ERROR: No se agrego el producto";
