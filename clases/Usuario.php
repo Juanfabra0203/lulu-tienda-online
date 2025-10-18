@@ -24,6 +24,26 @@
 
         }
 
+        public function login($email,$password){
+            $sql = "SELECT * FROM " . $this->tabla . " WHERE email = :email LIMIT 1 ";
+            $stmt = $this->conn -> prepare($sql);
+            $stmt -> bindParam(":email",$email);
+            $stmt->execute();
+
+
+            if($stmt->rowCount() > 0){
+
+                $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if (password_verify($password,$usuario['password__hash'])) {
+                    return $usuario;
+                }
+
+            }
+            return false;
+
+        }
+
     }
     
     
