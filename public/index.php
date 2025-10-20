@@ -17,6 +17,7 @@ $lista = $producto->obtenerProductos();
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Lulú, el mundo del arte</title>
     <link href="../assets/img/logo-lulu.png" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../style.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
@@ -24,9 +25,10 @@ $lista = $producto->obtenerProductos();
             theme: {
                 extend: {
                     colors: {
-                        "primary-cyan": "#00BFFF",
-                        "primary-pink": "#FF1493",
-                        "primary-yellow": "#FFD700",
+                        "primary-cyan": "#16BDF0",
+                        "primary-pink": "#F01653",
+                        "primary-turquoise": "rgb(33 216 199)",
+                        "primary-yellow": "#F0E116",
                         "background-light": "#FFFFFF",
                         "background-dark": "#1a1a1a",
                         "text-dark": "#221810",
@@ -47,17 +49,17 @@ $lista = $producto->obtenerProductos();
     </script>
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
     <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Epilogue%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet" />
+    
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-text-dark dark:text-text-light">
+<body class="bg-background-light dark:bg-background-dark font-display text-text-dark dark:text-text-light scroll-smooth">
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-        <header class="flex flex-col md:flex-row items-center justify-between whitespace-nowrap border-b border-primary-cyan/20 dark:border-primary-cyan/30 px-4 sm:px-6 lg:px-10 py-4">
+
+        <header class="flex flex-col md:flex-row items-center justify-between whitespace-nowrap  dark:border-primary-cyan/30 px-4 sm:px-6 lg:px-10 py-4">
             <div class="flex items-center justify-between w-full md:w-auto">
                 <div class="flex items-center gap-3 text-primary-pink md:hidden">
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="#00BFFF"></path>
-                    </svg>
-                    <img src="" alt="">
+                    <img src="../assets/img/logo-lulu.png" class="h-10 w-10" fill="currentColor" viewBox="0 0 48 48" alt="">
+                    <p class="text-sm">Lulú, el mundo del arte</p>
                 </div>
                 <button class="md:hidden" id="menu-toggle">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -66,10 +68,10 @@ $lista = $producto->obtenerProductos();
                 </button>
             </div>
             <nav class="hidden md:flex items-center justify-center flex-1 gap-4 lg:gap-6 mt-4 md:mt-0 w-full" id="mobile-menu">
-                <a class="text-sm font-medium hover:text-primary-cyan transition-colors text-center" href="#">INICIO</a>
-                <a class="text-sm font-medium hover:text-primary-cyan transition-colors text-center" href="#">PRODUCTOS</a>
-                <a class="text-sm font-medium hover:text-primary-cyan transition-colors text-center" href="#">GALERÍA</a>
-                <div class="flex items-center justify-center w-32 h-21 rounded-full  mx-4">
+                <a class="text-sm font-medium hover:text-primary-cyan transition-colors text-center" href="./index.php">INICIO</a>
+                <a class="text-sm font-medium hover:text-primary-cyan transition-colors text-center" href="#productos">PRODUCTOS</a>
+                <a class="text-sm font-medium hover:text-primary-cyan transition-colors text-center" href="../public/galeria.php">GALERÍA</a>
+                <div class="flex items-center justify-center w-32 h-21 rounded-full  mx-4" id="logo-lulu">
                     <img src="../assets/img/logo-lulu.png" alt="Logo lulú">
                 </div>
                 <a class="text-sm font-medium hover:text-primary-cyan transition-colors text-center" href="#">EVENTOS</a>
@@ -79,60 +81,67 @@ $lista = $producto->obtenerProductos();
         </header>
         <main class="flex-1 bg-white">
             <div class="mx-auto">
-                <div class="@container">
-                    <div class="p-0 @480px]:p-4">
-                        <div class="relative flex min-h-[300px] sm:min-h-[600px] flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat p-4" style='background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/486487615_671562898784838_3336608059475271290_n.jpg");'>
+                <div class="@container shadow-xl ">
+                    <div class="p-0 ">
+                        <div class="relative flex min-h-[300px] sm:min-h-[480px] flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat" style='background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/486487615_671562898784838_3336608059475271290_n.jpg ");'>
                             <div class="flex flex-col gap-2 text-center text-white">
                                 <h1 class="text-4xl sm:text-5xl font-black tracking-tighter @[480px]:text-6xl" style="text-shadow: 2px 2px 4px #FF1493;">Crea algo único</h1>
                                 <p class="max-w-xl text-base font-normal text-white/90 @[480px]:text-lg px-4 sm:px-0">Transforma tus ideas en productos personalizados de alta calidad. Desde mugs hasta camisetas, diseña lo que quieras.</p>
                             </div>
+                            <button class="flex h-12 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary-pink px-6 text-base font-bold text-white transition-transform hover:scale-105">
+                                <span class="truncate">Diseña ahora</span>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <section class="py-32 bg-primary-cyan/10 my-8">
+                <section class="py-32 bg-primary-turquoise/100 shadow-md"><!--bg-primary-cyan/10-->
                     <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="pb-8 pt-5 text-2xl font-bold tracking-tight text-center text-primary-pink">Productos destacados</h2>
+                        <h2 class="pb-8 pt-5 text-3xl mb-5 font-bold tracking-tight text-center text-background-light">Productos destacados</h2>
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                             <div class="flex flex-col gap-3 group">
                                 <div class="drop-shadow-[0_0_6px_rgba(0,0,0,1)] aspect-square w-full rounded-lg bg-cover bg-center transition-transform group-hover:scale-105" style='background-image: url("../assets/img/Mug_ceramica-sinfondo.png");'></div>
-                                <h3 class="text-center text-base font-semibold text-primary-pink">Mugs</h3>
+                                <h3 class="text-center text-base font-semibold text-background-light">Mugs</h3>
                             </div>
                             <div class="flex flex-col gap-3 group">
                                 <div class="drop-shadow-[0_0_6px_rgba(0,0,0,1)] aspect-square w-full rounded-lg bg-cover bg-center transition-transform group-hover:scale-105" style='background-image: url("../assets/img/Libreta-sinfondo.png");'></div>
-                                <h3 class="text-center text-base font-semibold text-primary-pink">Libretas</h3>
+                                <h3 class="text-center text-base font-semibold text-background-light">Libretas</h3>
                             </div>
                             <div class="flex flex-col gap-3 group">
                                 <div class="drop-shadow-[0_0_6px_rgba(0,0,0,1)] aspect-square w-full rounded-lg bg-cover bg-center transition-transform group-hover:scale-105" style='background-image: url("../assets/img/camiseta-sinfondo.png");'></div>
-                                <h3 class="text-center text-base font-semibold text-primary-pink">Camisetas</h3>
+                                <h3 class="text-center text-base font-semibold text-background-light">Camisetas</h3>
                             </div>
                             <div class="flex flex-col gap-3 group">
                                 <div class="drop-shadow-[0_0_6px_rgba(0,0,0,1)] aspect-square w-full rounded-lg bg-cover bg-center transition-transform group-hover:scale-105" style='background-image: url("../assets/img/Lapicero_plastico_sinfondo.png");'></div>
-                                <h3 class="text-center text-base font-semibold text-primary-pink">Lapiceros</h3>
+                                <h3 class="text-center text-base font-semibold text-background-light">Lapiceros</h3>
                             </div>
                             <div class="flex flex-col gap-3 group">
                                 <div class="drop-shadow-[0_0_6px_rgba(0,0,0,1)] aspect-square w-full rounded-lg bg-cover bg-center transition-transform group-hover:scale-105" style='background-image: url("../assets/img/boton_sinfondo.png");'></div>
-                                <h3 class="text-center text-base font-semibold text-primary-pink">Botones</h3>
+                                <h3 class="text-center text-base font-semibold text-background-light">Botones</h3>
                             </div>
 
                         </div>
                     </div>
                 </section>
-                <section class="py-12 bg-primary-yellow/20 my-8">
+                <section class="py-12 bg-primary-yellow/100 scroll" id="productos"> <!--bg-primary-yellow/20-->
                     <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="pb-4 pt-5 text-2xl font-bold tracking-tight text-center text-primary-pink">Nuestros Productos</h2>
+                        <h2 class="pb-4 pt-5 text-3xl mb-5 font-bold tracking-tight text-center text-background-light">Nuestros Productos</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 ">
 
                             <?php foreach (array_slice($lista, 0, 6) as $item): ?>
 
-                                <div class="flex flex-col gap-4 group p-4 border rounded">
-                                    <div class="mx-auto px-5 w-48 md:w-64 aspect-square bg-cover bg-center rounded-lg transition-transform group-hover:scale-105 border-4 border-white justify-items-center" style='background-image: url("../assets/img/<?= htmlspecialchars($item['imagen']) ?>")'></div>
+                                <div class="flex flex-col gap-4 group p-10 rounded shadow-md" style="background-color: #d8d8d845;">
+                                    <div class="mx-auto px-6 w-48 md:w-64 aspect-square bg-cover bg-center rounded-lg transition-transform group-hover:scale-105 justify-items-center" style='background-image: url("../assets/img/<?= htmlspecialchars($item['imagen']) ?>")'></div>
                                     <div class="flex flex-col">
-                                        <h3 class="text-base font-bold text-primary-pink"><?= htmlspecialchars($item['nombre_producto']) ?></h3>
-                                        <p class="text-sm w-2/2 text-text-dark/80 dark:text-text-light/80 mt-1"><?= htmlspecialchars($item['descripcion']) ?></p>
-                                        <p class="text-lg font-bold text-primary-cyan mt-2">$<?= number_format($item['precio'], 2) ?></p>
+                                        <h3 class="text-base font-bold text-background-light"><?= htmlspecialchars($item['nombre_producto']) ?></h3>
+                                        <p class="text-sm w-2/2  mt-1 text-background-light"><?= htmlspecialchars($item['descripcion']) ?></p>
+                                        <p class="text-lg font-bold text-background-light mt-2">$<?= number_format($item['precio'], 2) ?></p>
                                     </div>
+                                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg transition-transform duration-300 hover:scale-110 hover:rotate-2">
+                                        <a href="">Agregar al carrito</a>
+                                    </button>
+
                                 </div>
-                            <?php endforeach?>
+                            <?php endforeach ?>
                         </div>
 
                         <div class="mt-10 text-center">
@@ -140,14 +149,14 @@ $lista = $producto->obtenerProductos();
                         </div>
 
                 </section>
-                <section class="py-20 bg-white relative">
+                <section class="py-20 bg-primary-pink relative">
                     <div class="absolute inset-0 bg-cover bg-center opacity-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCrbU_C0zUWeAUx50Lf-9TaiqtbPPCVgbQ_6ldXKf0rOs1hfuWzoS2cxrU_GlqdpkVVNWI5u_pgINuBD0jjBr1RozGwziU2Js224TdCQILcGdfJzrorWrzscHlrDFFImJb4YJfOfGAG6V26-fyIJQInwk212NPcfWLcZhOAwfCo2fFotXAGkFymNTep1bGKxQ4aNDRFzAvlcNAyLao4YqtUu3GpxYUFBxo0vTRpxF0NPR7VbNLXHgNcvu8GLiGaVJRGsT37_s3DxFQ");'></div>
                     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-                            <span class="text-yellow-400">Lulú</span>
-                            <span class="text-blue-800">Colombia</span>
+                            <span class="text-white">Lulú</span>
+                            <span class="text-white">Colombia</span>
                         </h2>
-                        <p class="mt-4 max-w-3xl mx-auto text-lg sm:text-xl text-gray-700">Un viaje por la cultura y el color de Colombia a través de nuestros productos.</p>
+                        <p class="mt-4 max-w-3xl mx-auto text-lg sm:text-xl text-background-light">Un viaje por la cultura y el color de Colombia a través de nuestros productos.</p>
                         <div class="mt-12 grid gap-8 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
                             <div class="flex flex-col rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 border-2 border-transparent hover:border-yellow-400">
                                 <div class="flex-shrink-0">
@@ -203,28 +212,29 @@ $lista = $producto->obtenerProductos();
                         </div>
                     </div>
                 </section>
-                <section class="py-12 bg-white">
+
+                <section class="py-12 bg-primary-cyan/100 ">
                     <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 class="pb-4 pt-5 text-2xl font-bold tracking-tight text-center text-primary-pink">Eventos Destacados</h2>
+                        <h2 class="pb-4 pt-5 text-3xl my-5 font-bold tracking-tight text-center text-background-light">Eventos Destacados</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="flex flex-col gap-4 bg-primary-cyan/10 p-6 rounded-xl">
+                            <div class="flex flex-col gap-4 bg-background-light/100 p-6 rounded-xl">
                                 <div class="w-full aspect-video bg-cover bg-center rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQzfIdMlGnoXIfoWxTNhi9bbV9cURTEIZ-zJwsqN3lo4OVzUztYROT4IE8JAewPPevqkSf8oT6QN-5VJK1VCA_AegzIXVNk-JRq-2J9exM7-wnKfPZ4VR3MYISjfCs6bk9mthCrxzqjGR0PIJQzH6LvwMxIsT2ERnxE1R-4zEQo0QDR34VD0W0uz2BFpAhIbKJd4AWCYx8YaG-oA2SThBKjPtKrIcKBPMoIUddhc40Tppw_P-IkhsA-Ic4ZDUdIRRN_M7c0fXf5jY");'></div>
                                 <div class="flex flex-col">
-                                    <h3 class="text-xl font-bold text-primary-cyan">Lanzamiento de Marca en Coworking Central</h3>
-                                    <p class="text-base text-text-dark/80 dark:text-text-light/80 mt-1">Celebramos el lanzamiento de una nueva marca de ropa urbana con camisetas y gorras personalizadas en un evento vibrante en el corazón de la ciudad.</p>
+                                    <h3 class="text-xl font-bold text-background-dark">Lanzamiento de Marca en Coworking Central</h3>
+                                    <p class="text-base text-background-dark mt-1">Celebramos el lanzamiento de una nueva marca de ropa urbana con camisetas y gorras personalizadas en un evento vibrante en el corazón de la ciudad.</p>
                                 </div>
                             </div>
-                            <div class="flex flex-col gap-4 bg-primary-yellow/20 p-6 rounded-xl">
+                            <div class="flex flex-col gap-4 bg-background-light/100 p-6 rounded-xl">
                                 <div class="w-full aspect-video bg-cover bg-center rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQzfIdMlGnoXIfoWxTNhi9bbV9cURTEIZ-zJwsqN3lo4OVzUztYROT4IE8JAewPPevqkSf8oT6QN-5VJK1VCA_AegzIXVNk-JRq-2J9exM7-wnKfPZ4VR3MYISjfCs6bk9mthCrxzqjGR0PIJQzH6LvwMxIsT2ERnxE1R-4zEQo0QDR34VD0W0uz2BFpAhIbKJd4AWCYx8YaG-oA2SThBKjPtKrIcKBPMoIUddhc40Tppw_P-IkhsA-Ic4ZDUdIRRN_M7c0fXf5jY");'></div>
                                 <div class="flex flex-col">
-                                    <h3 class="text-xl font-bold text-primary-yellow">Feria de Emprendimiento Local</h3>
-                                    <p class="text-base text-text-dark/80 dark:text-text-light/80 mt-1">Participamos en la feria anual de emprendedores, mostrando nuestra variedad de productos personalizables y conectando con la comunidad creativa local.</p>
+                                    <h3 class="text-xl font-bold text-background-dark">Feria de Emprendimiento Local</h3>
+                                    <p class="text-base text-background-dark mt-1">Participamos en la feria anual de emprendedores, mostrando nuestra variedad de productos personalizables y conectando con la comunidad creativa local.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section class="py-12 bg-primary-pink/5 my-10">
+                <section class="py-12 bg-primary-pink/5">
                     <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                         <h2 class="pb-8 pt-5 text-3xl font-bold tracking-tight text-center text-primary-pink">Galería de Creaciones</h2>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -259,11 +269,11 @@ $lista = $producto->obtenerProductos();
 
 
                         <div class="mt-10 text-center">
-                            <a class="inline-block bg-primary-pink text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-cyan transition-colors " href="#">Mira más aquí</a>
+                            <a class="inline-block bg-primary-pink text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-cyan transition-colors " href="./galeria.php">Mira más aquí</a>
                         </div>
                 </section>
-                <section class="py-16 bg-primary-cyan/5 my-10">
-                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <section class="py-16 bg-primary-cyan/5 ">
+                    <div class="max-w-4xl mx-auto  px-4 sm:px-6 lg:px-8">
                         <div class="text-center">
                             <h2 class="text-3xl font-bold text-primary-pink">¿Tienes una idea? ¡Hablemos!</h2>
                             <p class="mt-4 text-lg text-text-dark/80">Envíanos tus consultas o ven a visitarnos. Estamos aquí para ayudarte a crear.</p>
@@ -286,7 +296,7 @@ $lista = $producto->obtenerProductos();
                                     <button class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-pink hover:bg-primary-pink/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-pink transition-colors" type="submit">Enviar Mensaje</button>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </section>
@@ -360,12 +370,17 @@ $lista = $producto->obtenerProductos();
     <script>
         document.getElementById("menu-toggle").addEventListener("click", function() {
             var menu = document.getElementById("mobile-menu");
+            var logo_menu = document.getElementById("logo-lulu");
+            
             if (menu.classList.contains("hidden")) {
                 menu.classList.remove("hidden");
                 menu.classList.add("flex", "flex-col", "items-center", "w-full", "py-4", "gap-4");
+                logo_menu.style.display = "none";
             } else {
                 menu.classList.add("hidden");
                 menu.classList.remove("flex", "flex-col", "items-center", "w-full", "py-4", "gap-4");
+                logo_menu.style.display = "block";
+
             }
         });
     </script>
